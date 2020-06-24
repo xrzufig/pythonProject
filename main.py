@@ -1,3 +1,5 @@
-name = input('enter your name: ')
+task = input('enter task: ')
 
-print('hello, ', name)
+file = open('tasks.txt', 'w')
+file.write(task)
+file.close()
