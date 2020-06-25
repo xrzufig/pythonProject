@@ -19,9 +19,22 @@ def decisionToDelete():
         new_file = open('toDO.txt', 'w+')
         for line in lines:
             new_file.write(line)
+    elif choice == '3':
+        deleteEveryTask()
     else:
-        print('ok, goodbye')
-        
+        print('')
+
+def deleteEveryTask():
+    file = open('toDO.txt', 'r')
+    lines = file.readlines()
+    file.close()
+    del lines[:25]
+    new_file = open('toDO.txt', 'w+')
+    for line in lines:
+        new_file.write(line)
+    printTask
+
+
 #entering task
 task = input('enter task: ')
 
@@ -32,7 +45,7 @@ file.write('\n')
 file.close()
 
 #choice of deleting tasks
-choice = str(input('Do you want to delete task?: '))
+choice = str(input('Do you want to delete task or all tasks(type 3)?: '))
 #making choice upper to be easier for input
 choice.upper
 #print current file
@@ -42,6 +55,7 @@ file.close()
 #choice of deleting file
 decisionToDelete()
 
+print('there are your tasks: ')
 printTask()
 print('goodbye!')
 
