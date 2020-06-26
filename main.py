@@ -1,14 +1,17 @@
 #import'ing usefull stuff
 from tkinter import *
+import sys
 
 #appending window
 #root = Tk()
 
+#functions#functions#functions#functions#functions#functions
+#print tasks
 def printTask():
     f = open('toDO.txt', 'r')
     print(open('toDO.txt', 'r').read())
     f.close()
-
+#asking do you want to delete
 def decisionToDelete():
     if choice == 'yes':
         file = open('toDO.txt', 'r')
@@ -22,8 +25,8 @@ def decisionToDelete():
     elif choice == '3':
         deleteEveryTask()
     else:
-        print('')
-
+        sys.exit
+# deletes every task
 def deleteEveryTask():
     file = open('toDO.txt', 'r')
     lines = file.readlines()
@@ -33,25 +36,30 @@ def deleteEveryTask():
     for line in lines:
         new_file.write(line)
     printTask
+#asking if you want to add new task
+def addNewTask():
+    decision = input('do you want to enter new task?: ')
+    if decision == 'yes':
+        task = input('enter task: ')
 
+        #opening toDO.txt
+        file = open('toDO.txt', 'a+')
+        file.write(task)
+        file.write('\n')    
+        file.close()
+    else:
+        print('ok, there are your current tasks')
 
-#entering task
-task = input('enter task: ')
+addNewTask()
 
-#opening toDO.txt
-file = open('toDO.txt', 'a+')
-file.write(task)
-file.write('\n')    
-file.close()
+#printing current tasks
+printTask()
+
 
 #choice of deleting tasks
 choice = str(input('Do you want to delete task or all tasks(type 3)?: '))
 #making choice upper to be easier for input
 choice.upper
-#print current file
-printTask()
-file.close()
-
 #choice of deleting file
 decisionToDelete()
 
